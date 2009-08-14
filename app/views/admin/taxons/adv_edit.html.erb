@@ -1,0 +1,11 @@
+<%= error_messages_for :taxon %>
+<% form_for @taxon, :url => admin_adv_edit_taxon_url(@taxon.id), :html => {:multipart => true} do |f| %>
+  <p><%= label_tag 'taxon_name', t(:name) %><br />
+  <%= f.text_field :name %></p>
+  <p><%= label_tag 'taxon_icon', t('advanced_taxon.icon') %><br />
+  <%= f.file_field :icon %></p>
+  <p><%= label_tag 'taxon_description', t(:description) %><br />
+  <%= text_area :taxon, :description %></p>
+  <%= submit_tag t(:update) %>
+<% end %>
+
