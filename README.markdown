@@ -1,9 +1,12 @@
 Advanced Taxon
 ---------------
 
-This extension adds an opportunity to attach a picture and description for the taxon.
+This [Spree](http://github.com/railsdog/spree/tree/master) extension adds an opportunity to attach a picture and description for the taxon.
+
 Advanced properties can be set by route `/admin/taxons/:id/advanced/edit/`
+
 You must independently provide links to `admin_adv_edit_taxon_url(@taxon.id)` in your site extension.
+
 For example in `taxonomy.js`:
 
     // ...
