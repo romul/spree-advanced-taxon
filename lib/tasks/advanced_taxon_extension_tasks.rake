@@ -3,20 +3,20 @@ namespace :db do
   task :bootstrap  => :environment do
     # load initial database fixtures (in db/sample/*.yml) into the current environment's database
     ActiveRecord::Base.establish_connection(RAILS_ENV.to_sym)
-    Dir.glob(File.join(ExtendedTaxonExtension.root, "db", 'sample', '*.{yml,csv}')).each do |fixture_file|
-      Fixtures.create_fixtures("#{ExtendedTaxonExtension.root}/db/sample", File.basename(fixture_file, '.*'))
+    Dir.glob(File.join(AdvancedTaxonExtension.root, "db", 'sample', '*.{yml,csv}')).each do |fixture_file|
+      Fixtures.create_fixtures("#{AdvancedTaxonExtension.root}/db/sample", File.basename(fixture_file, '.*'))
     end
   end
 end
 
 namespace :spree do
   namespace :extensions do
-    namespace :extended_taxon do
-      desc "Copies public assets of the Extended Taxon to the instance public/ directory."
+    namespace :advanced_taxon do
+      desc "Copies public assets of the Advanced Taxon to the instance public/ directory."
       task :update => :environment do
         is_svn_git_or_dir = proc {|path| path =~ /\.svn/ || path =~ /\.git/ || File.directory?(path) }
-        Dir[ExtendedTaxonExtension.root + "/public/**/*"].reject(&is_svn_git_or_dir).each do |file|
-          path = file.sub(ExtendedTaxonExtension.root, '')
+        Dir[AdvancedTaxonExtension.root + "/public/**/*"].reject(&is_svn_git_or_dir).each do |file|
+          path = file.sub(AdvancedTaxonExtension.root, '')
           directory = File.dirname(path)
           puts "Copying #{path}..."
           mkdir_p RAILS_ROOT + directory
