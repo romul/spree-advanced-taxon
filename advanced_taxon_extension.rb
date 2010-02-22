@@ -15,7 +15,7 @@ class AdvancedTaxonExtension < Spree::Extension
   def activate
 
     Admin::TaxonsController.class_eval do
-      def adv_edit
+      def edit
         load_object
         unless request.get?
           if @taxon.update_attributes(params[:taxon])
